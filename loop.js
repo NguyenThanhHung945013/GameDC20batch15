@@ -76,13 +76,4 @@ if (typeof(Storage) !== 'undefined') {
   //Nếu không hỗ trợ
   alert('Trình duyệt của bạn không hỗ trợ Storage');
 }
-function changePcolor() {
-  var plements = document.getElementsByTagName('p');
-  for (var i = 0; i <= plements.length - 1; i++)  {
-      var element = plements[i];
-      console.log(element);
-      element.style.color = "red";
-      element.style.fontSize = "30px";
-  }
-}
-changePcolor();
+

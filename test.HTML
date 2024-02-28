@@ -7,38 +7,56 @@
 </head>
 <!-- <p>document.write("<p>Hello World!</p>"); -->
 <body>
+
+
+                document.getElementById('result').innerHTML = sum;
+            }
+        </script>
+        <form>
+            Nhập số a: <input type="text" id="a" value=""/> <br/>
+            Nhập số b: <input type="text" id="b" value=""/> <br/>
+            <span id="result"></span> <br/>
+            <input type="button" id="giaiBtn" value="Tìm nghiệm"/>
+        </form>
+
+        <script>
+            var button = document.getElementById('giaiBtn');
+            giaiBtn.onclick = function () {
+                let a = document.getElementById('a').value;
+                let b = document.getElementById('b').value;
+
+                if (a == "" || b == "") {
+                    alert("Vui lòng nhập dữ liệu");
+                } else {
+                    a = Number(a);
+                    b = Number(b);
+                    giai_pt_bac_nhat(a, b);
+                }
+            };
+
+            function giai_pt_bac_nhat(a, b)
+            {
+                if (a == 0 && b == 0) {
+                    alert('Phương trình vô số nghiệm');
+                } else if (a != 0 && b == 0) {
+                    alert('Phương trình có nghiệm x = 0');
+                } else if (a == 0 && b != 0) {
+                    alert("Phương trình vô nghiệm");
+                } else {
+                    alert('Phương trình có nghiệm x = ' + (-b / a));
+                }
+            }
+        </script>
+    <!-- <p>hi</p>
+    <p>hello</p>
+    <p>hi</p> -->
     <!-- <script>
         document.write("Hello World!");//Hàm document.write() để viết một chuỗi ra văn bản HTML.
-      </script>
-
+      </script> -->
+<!-- 
       <script type="text/javascript">
         alert("Đây là một thông báo!");   // hàm alert() để hiện thị một hộp thoại (popup) thông báo.
-    </script>
-    <script src="loop.js" type="text/javascript">  
-    </script> -->
-   <canvas id="mycanvas" width="100" height="100" style="border: 1px solid;">
 
-
-   </canvas>
-   <div> <canvas id="myCanvas" width="200" height="100" style="border: 1px solid;">
-
-
-   </canvas></div>
-   <div> <canvas id="Canvas" width="200" height="100" style="border: 1px solid;">
-
-
-   </canvas></div>
-   <input type="button" value="Vẽ đường thẳng" onclick="ve_duong_thang()">
-    
-   <script type="text/javascript">
-    function ve_duong_thang(){
-        var canvas= document.getElementById("mycanvas");
-        var context= canvas.getContext("2d");
-        context.moveTo(50,100);// Khai báo điểm đầu
-        context.lineTo(50,50); // Khai báo điểm cuối 
-        context.strokeStyle="#FF00000"; // khai báo màu của đường thẳng
-        context.stroke(); // Thực hiện vẽ đường thẳng
-    }
     
 
    </script>
