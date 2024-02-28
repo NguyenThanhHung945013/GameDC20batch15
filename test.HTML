@@ -5,34 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<h1>document.write("<h1>Hello World!</h1>");
+<!-- <p>document.write("<p>Hello World!</p>"); -->
 <body>
-    <h1>Tính tổng 2 số javascript 2</h1>
-        <input type="text" id="num1" value="0"/>
-        <input type="text" id="num2" value="0"/> <br/>
-        <span id="result"></span> <br/>
-        <input type="button" onclick="sum()" value="Tính tổng"/>
-        <script>
-            function sum(){
-                let a = document.getElementById("num1").value;
-                let b = document.getElementById("num2").value;
 
-                // Kiểm tra dữ liệu
-                if (a == "" || b == ""){
-                    alert("Vui lòng nhập vào hai số");
-                    return false;
-                }
-
-                // Ép kiểu dữ liệu
-                a = Number(a);
-                b = Number(b);
-
-                if (isNaN(a) || isNaN(b)){
-                    alert("Bạn phải nhập vào hai số");
-                    return false;
-                }
-
-                let sum = parseInt(a) + b;
 
                 document.getElementById('result').innerHTML = sum;
             }
@@ -81,87 +56,23 @@
 <!-- 
       <script type="text/javascript">
         alert("Đây là một thông báo!");   // hàm alert() để hiện thị một hộp thoại (popup) thông báo.
-    </script> -->
-    <!-- <script src="loop.js" type="text/javascript">  
-    </script> -->
 
-     <!-- thay đổi  các thẻ p thành  chuỗi "Hello World" -->
-    <!-- <script>
-        var arr = document.getElementsByTagName("p");
-        for (var x = 0; x < arr.length; x++) {
-          arr[x].innerHTML = "Hello World!";
-        }
-    </script> -->
-
-    <!-- <script>
-        //tìm 1 phần tử theo id của nó - trả về HTMLElement hoặc null nếu không thấy
-        document.getElementById(id)
     
-        //tìm các phần tử theo class - trả về HTMLCollection
-        document.getElementsByClassName(name)
+
+   </script>
+   <script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(95,50,40,0,2*Math.PI);
+    ctx.stroke();
+    </script> 
     
-        //tìm các phần tử theo tên thẻ - trả về HTMLCollection
-        document.getElementsByTagName(name)
-    </script> -->
-
-    <!-- <button onclick="changePcolor()">Thay đổi thẻ P</button>
-<script>
-    function changePcolor() {
-        var plements = document.getElementsByTagName('p');
-        for (var i = 0; i <= plements.length - 1; i++)  {
-            var element = plements[i];
-            console.log(element);
-            element.style.color = "red";
-            element.style.fontSize = "30px";
-        }
-    }
-</script> -->
-
-<!-- <div id ="demo">nội dung ví dụ</div>
-
-<button onclick="add_child()">KẾT QUẢ</button>
-<script>
-   function add_child() {
-       //tạo phần tử p    
-       var p = document.createElement("p");
-
-       //tạo phần tử text
-       var node = document.createTextNode("Some new text");
-
-       //gắn node vào p
-       p.appendChild(node);
-       
-       //Thay đổi một số thuộc tính của p
-       p.appendChild(node);
-       p.style.backgroundColor = 'red';
-       p.style.padding = "10px";
-       p.style.color = "white";
-
-       var div = document.getElementById("demo");
-       //gắn p vào div
-       div.appendChild(p);
-   }
-</script> -->
-<!-- <div id="demo">
-    <p id="p1">This is a paragraph.</p>
-    <p id="p2">This is another paragraph.</p>
-  </div>
-  
-  <script>
-      var parent = document.getElementById("demo");
-      var child = document.getElementById("p1");
-      parent.removeChild(child);
-  </script> -->
-    <!-- Các thuộc tính của phần tử trong DOM:
-
-element.childNodes : trả về mảng các phần tử con của nó
-element.firstChild : phần tử con đầu tiên
-element.lastChild : phần tử con cuối cùng
-element.hasChildNodes : trả về true nếu có phần tử con, ngược lại là false
-element.nextSibling : phần tử cùng cấp tiếp theo
-element.previousSibling : phần tử cùng cấp trước
-element.parentNode : trả về nút cha -->
-   
-    
+    <script>
+        var c = document.getElementById("Canvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World", 10, 50);
+        </script>
 </body>
 </html>
