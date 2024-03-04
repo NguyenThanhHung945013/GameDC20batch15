@@ -1,4 +1,5 @@
 function veduongthang() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -16,6 +17,7 @@ function veduongthang() {
     }
 }
 function veduongtron() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -33,6 +35,7 @@ function veduongtron() {
     }
 }
 function vevanban() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -50,6 +53,7 @@ function vevanban() {
     }
 }
 function gradient() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -70,6 +74,7 @@ function gradient() {
     }
 }
 function shadowonshape() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -96,6 +101,7 @@ function shadowonshape() {
     }
 }
 function linecap() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -134,6 +140,7 @@ function linecap() {
     }
 }
 function linejoin() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -173,6 +180,7 @@ function linejoin() {
     }
 }
 function DrawingBezierCurves() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -206,6 +214,7 @@ function DrawingBezierCurves() {
     }
 }
 function DrawingCurves() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -237,7 +246,8 @@ function DrawingCurves() {
         console.error("Không tìm thấy phần tử Canvas");
     }
 }
-function DrawingComplexLiness() {
+function DrawingComplexLines() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
         var ctx = c.getContext("2d");
@@ -272,17 +282,18 @@ function DrawingComplexLiness() {
     }
 }
 function Rectangles() {
-    var c = document.getElementById("myCanvas");
+    clearCanvas();
+    var c = ctx.getElementById("myCanvas");
     if (c) {
-        var context = c.getContext("2d");
-        if (context) {
-            context.beginPath();
-            context.rect(188, 50, 200, 100);
-            context.fillStyle = 'yellow';
-            context.fill();
-            context.lineWidth = 7;
-            context.strokeStyle = 'black';
-            context.stroke();
+        var ctx = c.getContext("2d");
+        if (ctx) {
+            ctx.beginPath();
+            ctx.rect(188, 50, 200, 100);
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+            ctx.lineWidth = 7;
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
         }
         else {
             console.error("Context không được hỗ trợ");
@@ -293,17 +304,18 @@ function Rectangles() {
     }
 }
 function quadraticCurveTo() {
+    clearCanvas();
     var c = document.getElementById("myCanvas");
     if (c) {
-        var context = c.getContext("2d");
-        if (context) {
-            context.beginPath();
-            context.moveTo(188, 150);
-            context.quadraticCurveTo(288, 0, 388, 150);
-            context.lineWidth = 10;
+        var ctx = c.getContext("2d");
+        if (ctx) {
+            ctx.beginPath();
+            ctx.moveTo(188, 150);
+            ctx.quadraticCurveTo(288, 0, 388, 150);
+            ctx.lineWidth = 10;
             // line color
-            context.strokeStyle = 'black';
-            context.stroke();
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
         }
         else {
             console.error("Context không được hỗ trợ");
@@ -313,3 +325,130 @@ function quadraticCurveTo() {
         console.error("Không tìm thấy phần tử Canvas");
     }
 }
+function draw() {
+   clearCanvas();
+    const ctx = document.getElementById("myCanvas").getContext("2d");
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0);
+    //   context.drawImage(imageObj, x, y, width, height);
+      ctx.beginPath();
+      ctx.moveTo(30, 96);
+      ctx.lineTo(70, 66);
+      ctx.lineTo(103, 76);
+      ctx.lineTo(170, 15);
+      ctx.stroke();
+    };
+    img.src = "./image/img.jpg";
+  }
+
+  // Thêm lệnh xóa canvas
+function clearCanvas() {
+    
+    var c = document.getElementById("myCanvas");
+    if (c) {
+        var ctx = c.getContext("2d");
+        if (ctx) {
+            ctx.clearRect(0, 0, c.width, c.height);
+        } else {
+            console.error("Context không được hỗ trợ");
+        }
+    } else {
+        console.error("Không tìm thấy phần tử Canvas");
+    }
+}
+
+
+
+
+
+
+
+function pattern() {
+    clearCanvas();
+    var c = document.getElementById("myCanvas");
+    if (c) {
+        var ctx = c.getContext("2d");
+        if (ctx) {
+            // Tạo một hình ảnh
+    const img = new Image();
+    img.src = "./image/img.jpg";
+
+    // Tạo một mẫu với hình ảnh
+    const pattern = ctx.createPattern(img, "repeat");
+    
+    // Sử dụng mẫu để vẽ hình chữ nhật
+    ctx.fillStyle = pattern;
+    ctx.fillRect(0, 0, 500, 500);
+        }
+        else {
+            console.error("Context không được hỗ trợ");
+        }
+    }
+    else {
+        console.error("Không tìm thấy phần tử Canvas");
+    }
+}
+
+downloadIMG();
+function saveAndrestore() {
+    // downloadIMG();
+    clearCanvas();
+    var c = document.getElementById("myCanvas");
+    if (c) {
+        var ctx = c.getContext("2d");
+        if (ctx) {
+          // Vẽ một hình chữ nhật màu xanh
+    ctx.fillStyle = "green";
+    ctx.fillRect(10, 10, 50, 50);
+
+    // Lưu trạng thái hiện tại của canvas
+    ctx.save();
+
+    // Đổi màu và vẽ một hình chữ nhật màu đỏ ở vị trí khác
+    ctx.fillStyle = "red";
+    ctx.fillRect(100, 10, 50, 50);
+
+    // Khôi phục lại trạng thái đã lưu (quay về hình chữ nhật màu xanh)
+    ctx.restore();
+
+    // Vẽ một hình chữ nhật màu xanh khác ở vị trí khác
+    ctx.fillRect(200, 10, 50, 50);
+        }
+        else {
+            console.error("Context không được hỗ trợ");
+        }
+    }
+    else {
+        console.error("Không tìm thấy phần tử Canvas");
+    }
+}
+
+
+
+function downloadIMG() {
+    
+    var c = document.getElementById("myCanvas");
+    if (c) {
+        var ctx = c.getContext("2d");
+        if (ctx) {
+         // Create a temporary link element
+         var dataURL = c.toDataURL('image/png'); // Change 'image/png' to 'image/jpeg' if needed
+         var link = document.createElement('a');
+         link.href = dataURL;
+         link.download = 'canvas_image.png'; // Change the filename as needed
+ 
+         // Trigger the click event on the link to download the image
+         document.body.appendChild(link);
+         link.click();
+         document.body.removeChild(link);
+        }
+        else {
+            console.error("Context không được hỗ trợ");
+        }
+    }
+    else {
+        console.error("Không tìm thấy phần tử Canvas");
+    }
+}
+

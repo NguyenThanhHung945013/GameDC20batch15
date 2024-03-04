@@ -240,7 +240,7 @@ function DrawingCurvess() : void {
 }
 
 
-function DrawingComplexLines() : void {
+function DrawingComplexLiness() : void {
     var c = document.getElementById("myCanvas") as HTMLCanvasElement | null;
 
     if (c) {
@@ -325,3 +325,23 @@ function quadraticCurveToo() : void {
         console.error("Không tìm thấy phần tử Canvas");
     }
 }
+
+
+// function Drawimage(): void {
+//     var c = document.getElementById("myCanvas") as HTMLCanvasElement | null;
+
+//     if (c) {
+//         var ctx = c.getContext("2d");
+//         if (ctx) {
+//             var imageObj = new Image();
+//             imageObj.onload = function() {
+//                 ctx.drawImage(imageObj, 69, 50);
+//             };
+//             imageObj.src = "./image/Drawimage.jpg";
+//         } else {
+//             console.error("Context không được hỗ trợ");
+//         }
+//     } else {
+//         console.error("Không tìm thấy phần tử Canvas");
+//     }
+// }
