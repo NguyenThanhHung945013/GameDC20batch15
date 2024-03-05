@@ -23,7 +23,7 @@ function veduongtron() {
         var ctx = c.getContext("2d");
         if (ctx) {
             ctx.beginPath();
-            ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+            ctx.arc(95, 50, 40, 0, 2 * Math.PI, );
             ctx.stroke();
         }
         else {
@@ -40,9 +40,51 @@ function vevanban() {
     if (c) {
         var ctx = c.getContext("2d");
         if (ctx) {
-            ctx.beginPath();
+
+
+            var x = 150;
+
+            // Drawing Basic Text
             ctx.font = "30px Arial";
-            ctx.fillText("Hello World", 10, 50);
+            ctx.fillStyle = "blue";
+            ctx.fillText("Hello, World!", x, 50);
+
+            // Styling Text
+            ctx.font = "bold 30px Arial";
+            ctx.fillStyle = "red";
+
+            // Positioning Text
+            x += 10; // Increase x-coordinate for spacing
+            ctx.fillText("Positioned Text", x, 150);
+
+            // Shadows on Text
+            x += 10; // Increase x-coordinate for spacing
+            ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+            ctx.shadowBlur = 5;
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
+            ctx.fillText("Text with Shadows", x, 250);
+
+            // Text Stroke
+            x += 10; // Increase x-coordinate for spacing
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "green";
+            ctx.strokeText("Text with Stroke", x, 350);
+
+            // Text Align
+            x += 10; // Increase x-coordinate for spacing
+            ctx.textAlign = "center";
+            ctx.fillStyle = "purple";
+            ctx.fillText("Centered Text", x, 450);
+
+            // Text Baseline
+            x += 10; // Increase x-coordinate for spacing
+            ctx.textBaseline = "bottom";
+            ctx.fillStyle = "orange";
+            ctx.fillText("Text with Bottom Baseline", x, 550);
+ 
+             // Draw text with all the properties
+            //  ctx.fillText("Styled Text with Shadows", 50, 100);
         }
         else {
             console.error("Context không được hỗ trợ");
@@ -79,6 +121,7 @@ function shadowonshape() {
     if (c) {
         var ctx = c.getContext("2d");
         if (ctx) {
+           
             ctx.shadowColor = "black";
             ctx.shadowBlur = 6;
             ctx.shadowOffsetX = 6;
@@ -255,21 +298,32 @@ function DrawingComplexLines() {
             // Starting point
             var startX = 50;
             var startY = 100;
+            // Khởi tạo các biến startX và startY đại diện cho tọa độ bắt đầu của đường vẽ.
+           
             // Draw complex lines
             ctx.beginPath();
             ctx.moveTo(startX, startY);
             // Line segment
             ctx.lineTo(100, 50);
+            // Vẽ một đoạn thẳng từ điểm bắt đầu đến điểm có tọa độ (100, 50).
+            
             // Quadratic Bezier curve
             ctx.quadraticCurveTo(150, 75, 200, 50);
+            // Vẽ một đường cong Bézier bậc 2 (quadratic Bezier) với điểm kiểm soát là (150, 75) và điểm kết thúc là (200, 50).
+            
             // Cubic Bezier curve
             ctx.bezierCurveTo(250, 25, 300, 75, 350, 50);
-            // Line segment
+            // Vẽ một đường cong Bézier bậc 3 (cubic Bezier) với hai điểm kiểm soát và một điểm kết thúc.
+           
+            // // Line segment
             ctx.lineTo(400, 100);
+            //Vẽ một đoạn thẳng từ điểm kết thúc trước đó đến điểm có tọa độ (400, 100).
+            
             // Line segment
             ctx.lineTo(50, 100);
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = 'purple';
+            //  Vẽ một đoạn thẳng từ điểm hiện tại đến điểm bắt đầu để đóng hình.
+             ctx.lineWidth = 2;
+             ctx.strokeStyle = 'purple';
             ctx.stroke();
             ctx.closePath();
         }

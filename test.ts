@@ -22,7 +22,7 @@ function veduongtronn() : void {
         var ctx = c.getContext("2d");
         if (ctx) {
             ctx.beginPath();
-            ctx.arc(95,50,40,0,2*Math.PI);
+            ctx.arc(95,50,40,0,2*Math.PI, false);
             ctx.stroke();
         } else {
             console.error("Context không được hỗ trợ");
@@ -282,7 +282,7 @@ function DrawingComplexLiness() : void {
 }
 
 
-function Rectangless() : void {
+function Rectangleas() : void {
     var c = document.getElementById("myCanvas") as HTMLCanvasElement | null;
 
     if (c) {
