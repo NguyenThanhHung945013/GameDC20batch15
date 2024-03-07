@@ -62,15 +62,6 @@ var character = new Image();
 
 //Đặt nguồn cho file ảnh 
 character.src = '../image/character.png';
-
-// function updateFrame() {
-//     //Updating the frame index 
-//     curFrame = ++curFrame % frameCount;
-
-//     //Calculating the x coordinate for spritesheet 
-//     srcX = curFrame * width;
-//     ctx.clearRect(x, y, width, height);
-// }
 function draw() {
     //Updating the frame 
     updateFrame();
@@ -79,29 +70,15 @@ function draw() {
 }
 setInterval(draw, 100);
 
-
-
-//left right
-
-function moveLeft() {
-    left = true;
-    right = false;
-}
-
-function moveRight() {
-    left = false;
-    right = true;
-}
 function updateFrame() {
     //Updating the frame index 
     curFrame = ++curFrame % frameCount;
 
     //Tính tọa độ x cho spritesheet
     srcX = curFrame * width;
-
     //Xóa khung vẽ
+    
     ctx.clearRect(x, y, width, height);
-
     //nếu left là true và ký tự chưa tới cạnh trái
     if (left && x > 0) {
         //tính srcY 
@@ -109,7 +86,6 @@ function updateFrame() {
         //giảm tọa độ x
         x -= speed;
     }
-
     //nếu bên phải là đúng và ký tự chưa đến cạnh phải
     if (right && x < canvasWidth - width) {
         // tính tọa độ y cho spritesheet
@@ -118,3 +94,14 @@ function updateFrame() {
         x += speed;
     }
 }
+
+//left right
+function moveLeft() {
+    left = true;
+    right = false;
+}
+function moveRight() {
+    left = false;
+    right = true;
+}
+

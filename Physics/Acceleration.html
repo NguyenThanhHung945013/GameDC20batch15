@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuyển Động Canvas</title>
+    <style>
+      canvas {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1000" height="200"></canvas>
+    <script>
+     
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      var positionX = 50;
+      var velocityX = 0;
+      var accelerationX = 0.1; // Gia tốc không đổi theo hướng ngang
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        velocityX += accelerationX;
+        positionX += velocityX;
+        ctx.fillRect(positionX, 50, 30, 30);
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    </script>
+  </body>
+</html>

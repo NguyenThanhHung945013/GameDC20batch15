@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển Động Canvas</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="200"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        var viTriX = 50;
+        var vanTocX = 2; // Vận tốc không đổi theo hướng ngang
+
+        function chuyenDong() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            viTriX += vanTocX;
+            ctx.fillRect(viTriX, 50, 30, 30); // Vẽ hình vuông ở vị trí đã cập nhật
+            requestAnimationFrame(chuyenDong);
+        }
+
+        chuyenDong();
+    </script>
+</body>
+</html>
