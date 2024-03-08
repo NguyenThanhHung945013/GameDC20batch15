@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Projection Example</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="200"></canvas>
+
+  <script>
+    // Dữ liệu điểm chiều dọc
+    const data = [50, 120, 80, 160, 100];
+
+    // Lấy canvas và context
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+
+    // Vẽ các điểm dữ liệu trên canvas
+    function drawData() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      
+      context.beginPath();
+      for (let i = 0; i < data.length; i++) {
+        // Vertical projection: chiếu lên trục y
+        const x = i * 80;
+        const y = canvas.height - data[i];
+        
+        context.arc(x, y, 5, 0, 2 * Math.PI);
+        context.fillStyle = '#0095DD';
+        context.fill();
+        context.stroke();
+      }
+      context.closePath();
+    }
+
+    // Gọi hàm để vẽ dữ liệu
+    drawData();
+  </script>
+</body>
+</html>

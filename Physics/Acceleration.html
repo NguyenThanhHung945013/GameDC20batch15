@@ -18,13 +18,13 @@
       var ctx = canvas.getContext("2d");
 
       var positionX = 50;
-      var velocityX = 0;
+      var velocityX = 0;  // gia tốc  == 0
       var accelerationX = 0.1; // Gia tốc không đổi theo hướng ngang
 
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        velocityX += accelerationX;
-        positionX += velocityX;
+        velocityX += accelerationX; //Tăng vận tốc của hình chữ nhật dựa trên gia tốc.
+        positionX += velocityX;  //Cập nhật vị trí của hình chữ nhật dựa trên vận tốc.
         ctx.fillRect(positionX, 50, 30, 30);
         requestAnimationFrame(animate);
       }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="momentumCanvas" width="800" height="400"></canvas>
+    <script>var canvas = document.getElementById('momentumCanvas');
+        var ctx = canvas.getContext('2d');
+        
+        var object = {
+          x: 50,
+          y: canvas.height - 30,
+          velocityX: 2, // Vận tốc trên trục x
+          mass: 1, // Khối lượng
+        };
+        
+        function drawObject() {
+          ctx.beginPath();
+          ctx.arc(object.x, object.y, 15, 0, Math.PI * 2);
+          ctx.fillStyle = '#0095DD';
+          ctx.fill();
+          ctx.closePath();
+        }
+       // var momentumX = object.mass * object.velocityX;
+        function updateObject() {
+        object.x += object.velocityX;
+        //object.x += momentumX;
+          // Clear canvas
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+          drawObject();
+          requestAnimationFrame(updateObject);
+        }
+        updateObject();</script>
+</body>
+</html>

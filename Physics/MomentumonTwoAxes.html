@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="momentumCanvas" width="800" height="400"></canvas>
+   <script>var canvas = document.getElementById('momentumCanvas');
+    var ctx = canvas.getContext('2d');
+    
+    var object = {
+      x: 50,
+      y: canvas.height - 30,
+      velocityX: 2,
+      velocityY: -2, // Thêm thành phần vận tốc theo trục y
+      mass: 1,
+    };
+    
+    function drawObject() {
+      ctx.beginPath();
+      ctx.arc(object.x, object.y, 15, 0, Math.PI * 2);
+      ctx.fillStyle = '#0095DD';
+      ctx.fill();
+      ctx.closePath();
+    }
+    
+    function updateObject() {
+      object.x += object.velocityX;
+      object.y += object.velocityY;
+    
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+      // Draw object
+      drawObject();
+    
+      // Repeat the update function for animation
+      requestAnimationFrame(updateObject);
+    }
+    
+    // Call the update function to start the animation
+    updateObject();
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Projection Example</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvasChuyenDongGoc" width="400" height="200"></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvasChuyenDongGoc');
+        var ctx = canvas.getContext('2d');
+
+        var vatTheNem = {
+            x: 50,
+            y: canvas.height - 30,
+            vanTocX: 5,
+            vanTocY: -10,
+            trọngLuc: 0.5,
+            bánKính: 10
+        };
+
+        function veVatTheNem() {
+            ctx.beginPath();
+            ctx.arc(vatTheNem.x, vatTheNem.y, vatTheNem.bánKính, 0, Math.PI * 2);
+            ctx.fillStyle = '#0095DD';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function capNhatVatTheNem() {
+            vatTheNem.x += vatTheNem.vanTocX;
+            vatTheNem.y += vatTheNem.vanTocY;
+
+            // Áp dụng trọng lực để mô phỏng chuyển động ném
+            vatTheNem.vanTocY += vatTheNem.trọngLuc;
+
+            // Xóa canvas để vẽ lại
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Vẽ lại vật thể
+            veVatTheNem();
+
+            // Lặp lại hàm cập nhật để tạo hiệu ứng hoạt hình
+            requestAnimationFrame(capNhatVatTheNem);
+        }
+
+        // Gọi hàm cập nhật để bắt đầu hoạt hình
+        capNhatVatTheNem();
+    </script>
+</body>
+
+</html>
