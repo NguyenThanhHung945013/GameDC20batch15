@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXI.js Basic Example</title>
+</head>
+<body>
+
+<script src="https://pixijs.download/v6.1.3/pixi.min.js"></script>
+
+<script>
+    // Create a new application
+    const app = new PIXI.Application({ width: 800, height: 600, backgroundColor: 0x1099bb });
+    document.body.appendChild(app.view);
+
+    // Load an image and create a Sprite
+    PIXI.Loader.shared.add('cat', 'https://pixijs.io/examples/examples/assets/cat.png').load((loader, resources) => {
+        const cat = new PIXI.Sprite(resources.cat.texture);
+
+        // Set the anchor point to the center of the sprite
+        cat.anchor.set(0.5);
+
+        // Position the sprite in the center of the screen
+        cat.x = app.screen.width / 2;
+        cat.y = app.screen.height / 2;
+
+        // Add the sprite to the stage
+        app.stage.addChild(cat);
+    });
+</script>
+
+</body>
+</html>
