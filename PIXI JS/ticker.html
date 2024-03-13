@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiJS Animation Logic</title>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+</head>
+<body>
+    <script>
+        // Tạo ứng dụng PixiJS
+        const app = new PIXI.Application({
+            width: 1700,
+            height: 600,
+            backgroundColor: 0x1099bb,
+        });
+
+        // Thêm canvas vào body của HTML
+        document.body.appendChild(app.view);
+
+        // Tạo đối tượng texture từ hình ảnh
+        const texture = PIXI.Texture.from('../image/character.png');
+
+        // Tạo đối tượng sprite từ texture
+        const sprite = new PIXI.Sprite(texture);
+
+        // Đặt vị trí của sprite
+        sprite.x = 50;
+        sprite.y = 50;
+
+        // Thêm sprite vào stage
+        app.stage.addChild(sprite);
+
+        // Logic di chuyển ngang
+        let speed = 2;
+
+        // Bắt đầu vòng lặp animation
+        app.ticker.add(() => {
+            // Di chuyển sprite sang phải
+            sprite.x += speed;
+
+            // Nếu sprite vượt ra khỏi màn hình, đặt lại vị trí sang trái
+            if (sprite.x > app.screen.width) {
+                sprite.x = -sprite.width;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiJS Keyboard Movement Example</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+    
+
+    <script>
+        const app = new PIXI.Application({ width: 800, height: 600 });
+        document.body.appendChild(app.view);
+
+        const player = new PIXI.Graphics();
+        player.beginFill(0x00FF00);
+        player.drawRect(0, 0, 50, 50);
+        player.endFill();
+        player.x = app.renderer.width / 2;
+        player.y = app.renderer.height / 2;
+
+        app.stage.addChild(player);
+
+        // Tốc độ di chuyển của người chơi
+        const playerSpeed = 5;
+
+        // Bắt lấy sự kiện phím
+        const keys = {};
+
+        window.addEventListener('keydown', (e) => {
+            keys[e.keyCode] = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            keys[e.keyCode] = false;
+        });
+
+        // Vòng lặp chính của ứng dụng
+        app.ticker.add(() => {
+            // Di chuyển người chơi dựa trên sự kiện phím
+            if (keys[37]) { // Mũi tên trái
+                player.x -= playerSpeed;
+            }
+            if (keys[39]) { // Mũi tên phải
+                player.x += playerSpeed;
+            }
+            if (keys[38]) { // Mũi tên lên
+                player.y -= playerSpeed;
+            }
+            if (keys[40]) { // Mũi tên xuống
+                player.y += playerSpeed;
+            }
+        });
+    </script>
+</body>
+</html>
+
