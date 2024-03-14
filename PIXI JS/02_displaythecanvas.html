@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../pixi/pixi.min.js"></script>
+    <script>
+        // tạo một đối tượng canvas bằng pixi
+        const app = new PIXI.Application({
+            width:256,
+            height: 256,
+            antialias: true, //mờ cạnh
+            transparent: false,// tính trong suốt
+            resolution: 1 // độ phân giải
+        });
+        //Thêm canvas mà Pixi tự động tạo cho bạn vào tài liệu HTML
+        document.body.appendChild(app.view);
+        // thay đổi style , kích thước, đường viền 
+        app.renderer.view.style.border="1 px dashed black";
+        app.renderer.resize(512,512);
+        app.renderer.backgroundColor = 0xFF0000;
+         // màu hex  red
+    </script>
+</body>
+</html>
