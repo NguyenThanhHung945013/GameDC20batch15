@@ -1,42 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Moving sprites</title>
-  </head>
-  <body>
-    <script src="../pixi/pixi.min.js"></script>
-    <script>
-      const Application = PIXI.Application,
-        Container = PIXI.Container,
-        loader = PIXI.Loader.shared,
-        resources = PIXI.Loader.shared.resources,
-        TextureCache = PIXI.utils.TextureCache,
-        Sprite = PIXI.Sprite;
+<head>
+  <meta charset="utf-8">
+  <title>Di chuyển sprite</title>
+</head>
+<body>
+  <script src="../pixi/pixi.min.js"></script>
+  <script>
+    // Tạo các biến alias để bạn có thể gọi các thức định nghĩa được xây dựng bởi PixiJS thành tên ngắn gọn hơn và dễ đọc hơn.
+    const Application = PIXI.Application,
+      Container = PIXI.Container,
+      loader = PIXI.Loader.shared,
+      resources = PIXI.Loader.shared.resources,
+      TextureCache = PIXI.utils.TextureCache,
+      Sprite = PIXI.Sprite;
 
-      const app = new Application({
-        width: 256,
-        height: 256,
-        antialias: true,
-        transparent: false,
-        resolution: 1,
-      });
-      document.body.appendChild(app.view);
+    // Tạo một đối tượng Application mới với các thuộc tính được đặt thẻ.
+    const app = new Application({
+      width: 256,
+      height: 256,
+      antialias: true,
+      transparent: false,
+      resolution: 1,
+    });
 
-      loader.add("../image/cat.png").load(setup);
+    // Thêm phần tử vào thân của trang web.
+    document.body.appendChild(app.view);
 
-      let cat;
-      function setup() {
-        cat = new Sprite(resources["../image/cat.png"].texture);
-        cat.x= 0
-        cat.y = 96;
-        app.stage.addChild(cat);
-        app.ticker.add((delta) => gameLoop(delta));
-      }
+    // Thêm một ảnh vào cache để sử dụng.
+    loader.add("../image/cat.png").load(setup);
 
-      function gameLoop(delta) {
-        cat.x += 1;
-      }
-    </script>
-  </body>
+    // Khai báo các biến để sử dụng sau này.
+    let cat;
+
+    // Hàm setup được gọi khi ảnh được tải xuống.
+    function setup() {
+      // Tạo một sprite từ ảnh vừa được tải xuống.
+      cat = new Sprite(resources["../image/cat.png"].texture);
+
+      // Cài đặt vị trí ban đầu cho sprite
+      cat.x = 0;
+      cat.y = 96;
+
+      // Thêm sprite vào container - gốc mới cho các đối tượng grafi.
+      app.stage.addChild(cat);
+
+      // Cập nhật vị trí của sprite  sau mỗi lần vẽ ảnh, giúp cho một chu trình vòng lặp.
+      app.ticker.add((delta) => gameLoop(delta));
+    }
+
+    // Hàm được gọi trong mỗi lần vẽ mới
+    function gameLoop(delta) {
+      // Di chuyển sprite 1 đơn vị (Pixel) sang bên phải
+      cat.x += 1;
+    }
+  </script>
+</body>
 </html>

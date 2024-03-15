@@ -2,56 +2,60 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Velocity variables</title>
+<title>Di chuyển sprite</title>
 </head>
 <body>
 <script src="../pixi/pixi.min.js"></script>
 <script>
+  const Application = PIXI.Application,
+      Container = PIXI.Container,
+      loader = PIXI.Loader.shared,
+      resources = PIXI.Loader.shared.resources,
+      TextureCache = PIXI.utils.TextureCache,
+      Sprite = PIXI.Sprite;
 
-//Aliases
-const Application = PIXI.Application,
-    Container = PIXI.Container,
-    loader = PIXI.Loader.shared,
-    resources = PIXI.Loader.shared.resources,
-    TextureCache = PIXI.utils.TextureCache,
-    Sprite = PIXI.Sprite;
-
-//Create a Pixi Application
-const app = new Application({ 
-    width: 256, 
+  // Tạo một đối tượng ứng dụng PixiJS với các thuộc tính
+  const app = new Application({
+    width: 256,  
     height: 256,                       
     antialias: true, 
     transparent: false, 
     resolution: 1
+  });
+
+  // Thêm phần tử vào thân của trang
+  document.body.appendChild(app.view);
+
+  // Tải một ảnh và thêm nó vào bộ nhớ cache để sử dụng
+  loader
+    .add("../image/cat.png")
+    .load(setup);
+
+  // Khai báo biến
+  let cat;
+
+  // Hàm được gọi sau khi mã ảnh được tải xuống
+  function setup() {
+    cat = new Sprite(resources["../image/cat.png"].texture);
+    cat.y = 96;
+
+    // Khởi tạo thuộc tính vx và vy để đặt vị trí cho hình ảnh
+    cat.vx = 0;
+    cat.vy = 0;
+
+    // Thêm hình ảnh vào ứng dụng
+    app.stage.addChild(cat);
+
+    // Khởi tạo vòng lặp để giữ cho hình ảnh được vẽ lại liên tục
+    app.ticker.add((delta) => gameLoop(delta));
+
+    // Hàm được gọi ở mỗi lần vẽ lại ứng dụng
+    function gameLoop(delta) {
+      // Cập nhật thuộc tính px và py để chèn thêm một đơn vị pixel vào vị trí x và y của hình ảnh
+      cat.x += cat.vx;
+      cat.y += cat.vy;
+    }
   }
-);
-document.body.appendChild(app.view);
-
-loader
-  .add("../image/cat.png")
-  .load(setup);
-
-let cat;
-
-function setup() {
-
-  cat = new Sprite(resources["../image/cat.png"].texture);
-  cat.y = 96; 
-  cat.vx = 0;
-  cat.vy = 0;
-  app.stage.addChild(cat);
- 
-  app.ticker.add((delta) => gameLoop(delta));
-}
-
-function gameLoop(delta) {
-
-  cat.vx = 1;
-  cat.vy = 1;
-
-  cat.x += cat.vx;
-  cat.y += cat.vy;
-}
 </script>
 </body>
 </html>

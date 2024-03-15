@@ -2,40 +2,38 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Displaying text</title>
+<title>Hiển thị văn bản</title>
 </head>
 <body>
 <script src="../pixi/pixi.min.js"></script>
 <script>
+// Mã này demonstrates việc hiển thị văn bản sử dụng thư viện PixiJS.
 
-//Aliases
+// Biến đặt tên gọn hơn để dễ dàng truy xuất
 const Application = PIXI.Application,
     Text = PIXI.Text,
     TextStyle = PIXI.TextStyle;
 
-//Create a Pixi Application
-const app = new Application({ 
-    width: 256, 
-    height: 256,                       
-    antialias: true, 
-    transparent: false, 
-    resolution: 1,
-    backgroundColor: 0x6699ff
-  }
-);
+// Khởi tạo một ứng dụng Pixi
+const app = new Application({
+  width: 256, 
+  height: 256,                       
+  antialias: true, 
+  transparent: false, 
+  resolution: 1,
+  backgroundColor: 0x6699ff
+});
 
-//Add the canvas that Pixi automatically created for you to the HTML document
+// Thêm canvas của Pixi vào HTML document
 document.body.appendChild(app.view);
 
-
-//1. Simple text
-let message = new Text("Hello Pixi!");
-
-//Position it and add it to the stage
+// Hiển thị văn bản đơn giản
+const message = new Text("Xin chào Pixi!");
+// Đặt vị trí và thêm nó vào stage
 message.position.set(54, 96);
 app.stage.addChild(message);
 
-//2. Styled text
+// Tạo một style cho Text
 const style = new TextStyle({
   fontFamily: "Arial",
   fontSize: 36,
@@ -49,9 +47,9 @@ const style = new TextStyle({
   dropShadowDistance: 6,
 });
 
-const styledMessage = new Text("Styled Text", style);
-
-//Position it and add it to the stage
+// Hiển thị văn bản được styled
+const styledMessage = new Text("Văn bản đc styled", style);
+// Đặt vị trí và thêm nó vào stage
 styledMessage.position.set(54, 128);
 app.stage.addChild(styledMessage);
 </script>

@@ -1,58 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tài liệu</title>
   </head>
   <body>
     <script src="../pixi/pixi.min.js"></script>
     <script>
-      //Aliases
+      // Tạo bí danh
+      // Gán bí danh cho các lớp và hàm thường xuyên sử dụng của PixiJS
       const Application = PIXI.Application,
         Container = PIXI.Container,
-        loader = PIXI.Loader.shared,
+        loader = PIXI.Loader.shared, // Đối tượng tải tài nguyên
         resources = PIXI.Loader.shared.resources,
         TextureCache = PIXI.utils.TextureCache,
         Sprite = PIXI.Sprite;
 
-      //Create a Pixi Application
+      // Tạo một ứng dụng Pixi
+      // Khởi tạo một ứng dụng Pixi mới với các thuộc tính được chỉ định
       const app = new Application({
         width: 256,
         height: 256,
-        antialias: true,
-        transparent: false,
-        resolution: 1,
+        antialias: true, // Bật chế độ chống mờ
+        transparent: false, // Đặt màu nền (giảm bớt màu đen mặc định)
+        resolution: 1, // Đặt độ phân giải
       });
 
       document.body.appendChild(app.view);
 
+      // Tải hình ảnh và thực hiện hàm cài đặt khi nó được tải xong
       loader.add("../image/cat.png").load(setup);
 
+      // Hàm cài đặt khung hình và thêm hình ảnh mèo
       function setup() {
+        // Tạo một sprite mới sử dụng vẻ ảnh mèo đã tải xong
         const cat = new Sprite(resources["../image/cat.png"].texture);
 
-        // Xác định vị trí của sprite và thay đổi chiều rộng và chiều cao của nó
+        // Đặt vị trí của sprite và điều chỉnh kích thước của nó
         cat.x = 96;
         cat.y = 96;
-
-        // Tùy chọn thay đổi chiều rộng và chiều cao
         cat.width = 80;
         cat.height = 120;
 
-        //Tùy chọn căn giữa điểm neo của sprite
-        //   cat.anchor.x = 0.5;
-        //   cat.anchor.y = 0.5;
+        // Tùy chọn: đặt trọng tâm của sprite ở giữa
+        // cat.anchor.x = 0.5;
+        // cat.anchor.y = 0.5;
 
-        //Xoay nhân vật
+        // Xoay khung hình
         cat.rotation = 0.3;
-        //You can use this alternative syntax to set the
 
-        cat.anchor.set(0.5, 0.5);
-        /*  cat.position.set(120, 120);
-            cat.scale.set(1.5, 3);
-        */
+        // Cú pháp khác để đặt vị trí, kích thước và trọng tâm của sprite
+        // cat.anchor.set(0.5, 0.5);
+        // cat.position.set(120, 120);
+        // cat.scale.set(1.5, 3);
 
+        // Thêm sprite mèo vào cảnh
         app.stage.addChild(cat);
       }
     </script>

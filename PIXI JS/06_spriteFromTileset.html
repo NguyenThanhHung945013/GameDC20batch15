@@ -7,7 +7,6 @@
 <body>
 <script src="../pixi/pixi.min.js"></script>
 <script>
-
 //Aliases
 const Application = PIXI.Application,
     Container = PIXI.Container,
@@ -17,51 +16,35 @@ const Application = PIXI.Application,
     Sprite = PIXI.Sprite,
     Rectangle = PIXI.Rectangle;
 
-//Create a Pixi Application
-const app = new Application({ 
-    width: 256, 
-    height: 256,                       
-    antialias: true, 
-    transparent: false, 
+/// Tạo ứng dụng Pixi với kích thước 256 x 256 pixel
+const app = new Application({
+    width: 256,
+    height: 256,
+    antialias: true,
+    transparent: false,
     resolution: 1
-  }
-);
-
-//Add the canvas that Pixi automatically created for you to the HTML document
+});
+// Thêm canvas vào thẻ body của trang web
 document.body.appendChild(app.view);
-
-//load an image and run the `setup` function when it's done
+// Tải ảnh tileset và gọi hàm setup() khi ảnh đã được tải
 loader
   .add("../image/tileset.png")
   .load(setup);
-
+// Hàm setup() sẽ được gọi khi ảnh tileset đã được tải
 function setup() {
-
-  //Tạo sprite `tileset` từ kết cấu
-  const texture = TextureCache["../image/tileset.png"];
-
-//Tạo một đối tượng hình chữ nhật xác định vị trí và
-// Tạo đối tượng hình chữ nhật xác định vị trí và
-  const rectangle = new Rectangle(192, 128, 64, 64);
-
- // Yêu cầu kết cấu sử dụng phần hình chữ nhật đó
-  texture.frame = rectangle;
-
-  //Tạo sprite từ kết cấu
-  const rocket = new Sprite(texture);
-
-// Định vị hình tên lửa trên khung vẽ
-  rocket.x = 32;
-  rocket.y = 32;
-
-  //Tùy ý sử dụng `pivot` để di chuyển vị trí x và y của sprite
-  /*
-  rocket.pivot.set(32, 32);
-  rocket.rotation = 0.3;
-  console.log(rocket.position)
-  */
-
-  app.stage.addChild(rocket);
+    // Tạo texture từ ảnh tileset
+    const texture = TextureCache["../image/tileset.png"];
+    // Tạo một hình chữ nhật để xác định vị trí của sub-image
+    const rectangle = new Rectangle(192, 128, 64, 64);
+    // Cập nhật frame của texture để chỉ định sub-image
+    texture.frame = rectangle;
+    // Tạo một sprite từ texture với sub-image đã được chỉ định
+    const rocket = new Sprite(texture);
+    // Đặt vị trí của sprite trên scene
+    rocket.x = 32;
+    rocket.y = 32;
+    // Thêm sprite vào stage
+    app.stage.addChild(rocket);
 }
 </script>
 </body>

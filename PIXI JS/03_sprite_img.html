@@ -2,65 +2,65 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Make a sprite from an image</title>
+<title>Tạo sprite từ hình ảnh</title>
 </head>
 <body>
 <script src="../pixi/pixi.min.js"></script>
 <!-- <script>
 
+// Tạo một ứng dụng PIXI với các thuộc tính được xác định
 const app = new PIXI.Application({ 
-    width: 256, 
-    height: 256,                       
-    antialias: true, 
-    transparent: false, 
+    width: 256,  
+    height: 256,              
+    antialias: true,  
+    transparent: false,  
     resolution: 1
-  }
-);
+});
 document.body.appendChild(app.view);
 
+// Tải ảnh sử dụng PIXI Loader
 PIXI.Loader.shared
   .add("../image/cat.png")
   .load(setup);
 
 function setup() {
-  //Create the cat sprite
+  // Tạo một sprite mới sử dụng ảnh đã tải
   const cat = new PIXI.Sprite(PIXI.Loader.shared.resources["../image/cat.png"].texture);
 
-  //Add the cat to the stage
+  // Thêm sprite vào stage
   app.stage.addChild(cat);
 }
 </script> -->
 <script>
-    //Aliases sử dụng để chỉ một tên 
-    //hay biểu hiện ngắn gọn hoặc thân thiện hơn được sử dụng để đại diện cho một tên 
-    //hoặc biểu hiện khác trong mã lập trình
-    const Application = PIXI.Application,
-        loader = PIXI.Loader.shared,
-        resources = PIXI.Loader.shared.resources,
-        Sprite = PIXI.Sprite;
-    
-    //Create a Pixi Application
-    const app = new Application({ 
-        width: 256, 
-        height: 256,                       
-        antialias: true, 
-        transparent: false, 
-        resolution: 1
-      }
-    );
-    
-    document.body.appendChild(app.view);
-    
-    loader
-      .add("images/cat.png")
-      .load(setup);
-    
-    function setup() {
-      const cat = new Sprite(resources["images/cat.png"].texture);
-    
-      app.stage.addChild(cat);
-    
-    }
-    </script>
+  // Aliases được sử dụng để biểu diễn tên hoặc biểu thức bằng tên ngắn gọn hơn hoặc tên thân thiện hơn để đại diện cho tên hoặc biểu thức khác trong mã lập trình
+  const Application = PIXI.Application,
+    loader = PIXI.Loader.shared,
+    resources = PIXI.Loader.shared.resources,
+    Sprite = PIXI.Sprite;
+
+  // Tạo một ứng dụng PIXI mới
+  const app = new Application({ 
+    width: 256,  
+    height: 256,              
+    antialias: true,  
+    transparent: false,  
+    resolution: 1
+  });
+
+  document.body.appendChild(app.view);
+
+  // Tải ảnh sử dụng PIXI Loader
+  loader
+    .add("images/cat.png")
+    .load(setup);
+
+  function setup() {
+    // Tạo một sprite mới sử dụng ảnh đã tải
+    const cat = new Sprite(resources["images/cat.png"].texture);
+
+    // Thêm sprite vào stage
+    app.stage.addChild(cat);
+  }
+</script>
 </body>
 </html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Game states</title>
+</head>
+<body>
+<script src="../pixi/pixi.min.js"></script>
+<script>
+
+  // Alias
+  const Application = PIXI.Application,
+    Container = PIXI.Container,
+    loader = PIXI.Loader.shared,
+    resources = PIXI.Loader.shared.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Sprite = PIXI.Sprite;
+
+  // Tạo một ống đè
+  const app = new Application({ 
+    width: 256, 
+    height: 256,                       
+    antialias: true, 
+    transparent: false, 
+    resolution: 1
+  });
+
+  // Load image
+  loader
+    .add("../image/cat.png")
+    .load(setup);
+
+  // Khai báo biến
+  let cat, state;
+
+  // Hàm được gọi sau khi mã ảnh được tải xuống
+  function setup() {
+    cat = new Sprite(resources["../image/cat.png"].texture);
+    cat.y = 96;
+    cat.vx = 0;
+    cat.vy = 0;
+    app.stage.addChild(cat);
+
+    // Cập nhật trạng thái
+    state = play;
+
+    // Bắt đầu vòng lặp để vẽ lại ứng dụng
+    app.ticker.add((delta) => gameLoop(delta));
+
+    // Hàm được gọi ở mỗi lần vẽ lại
+    function gameLoop(delta) {
+      state(delta);
+    }
+  }
+
+  // Hàm để di chuyển hình ảnh sang phải 1 đơn vị mỗi khung hình
+  function play(delta) {
+    cat.vx = 1;
+    cat.x += cat.vx;
+
+    // Kiểm tra vị trí của hình ảnh
+    if (cat.x >= 100) {
+      // Đổi trạng thái
+      state = stop;
+    }
+  }
+
+  // Hàm để dừng lại
+  function stop(delta) {
+    console.log("stop:"+delta);
+  }
+
+</script>
+</body>
+</html>

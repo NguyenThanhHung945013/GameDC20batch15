@@ -2,68 +2,71 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Loading progress</title>
+<title>Tiến trình tải</title>
 </head>
 <body>
 <script src="../pixi/pixi.min.js"></script>
 <script>
-
-//Aliases
-const Application = PIXI.Application,
+  // Tạo các bí danh (aliases) cho các lớp và biến cần thiết
+  const Application = PIXI.Application,
     Container = PIXI.Container,
     loader = PIXI.Loader.shared,
     resources = PIXI.Loader.shared.resources,
     TextureCache = PIXI.utils.TextureCache,
     Sprite = PIXI.Sprite;
-const app = new Application({ 
-    width: 256, 
-    height: 256,                       
-    antialias: true, 
-    transparent: false, 
+
+  // Khởi tạo ứng dụng với các cấu hình cụ thể
+  const app = new Application({
+    width: 256,  
+    height: 256,                      
+    antialias: true,                    
+    transparent: false,                
     resolution: 1
+  });
+  document.body.appendChild(app.view);
+
+  // Đăng ký một hàm callback để xử lý sự kiện tiến trình tải của trình tải
+  loader.onProgress.add(loadProgressHandler);
+
+  // Tải một mảng các tài nguyên hình ảnh với đường dẫn cho trước
+  loader
+    .add([
+      "../image/cat.png",
+      "../image/blob.png",
+      "../image/explorer.png"
+    ])
+    .load(setup);
+
+  // Hàm loadProgressHandler được gọi khi trình tải kích hoạt sự kiện tiến trình
+  function loadProgressHandler(loader, resource) {
+    console.log("đang tải: " + resource.url);
+    console.log("tiến trình: " + loader.progress + "%");
   }
-);
-document.body.appendChild(app.view);
 
-//Use Pixi's built-in `Loader` module to load an image
-loader.onProgress.add(loadProgressHandler);
+  // 04_Loadingprogress.html:102 Tắt tự động tải lại đã bật.
+  // 04_Loadingprogress.html:46 đang tải: ../image/cat.png
+  // 04_Loadingprogress.html:53 tiến trình: 33.333333333333336%
+  // 04_Loadingprogress.html:46 đang tải: ../image/explorer.png
+  // 04_Loadingprogress.html:53 tiến trình: 66.66666666666667%
+  // 04_Loadingprogress.html:46 đang tải: ../image/blob.png
+  // 04_Loadingprogress.html:53 tiến trình: 100%
+  // 04_Loadingprogress.html:57 setup
 
-loader
-  .add([
-    "../image/cat.png",
-    "../image/blob.png",
-    "../image/explorer.png"
-  ])
-  .load(setup);
+  // Hàm setup được gọi khi trình tải hoàn thành công việc
+  function setup() {
+    console.log("thiết lập");
 
-function loadProgressHandler(loader, resource) {
-
-  console.log("loading: " + resource.url); 
-
-  console.log("progress: " + loader.progress + "%"); 
-}
-
-// 04_Loadingprogress.html:102 Live reload enabled.
-// 04_Loadingprogress.html:46 loading: ../image/cat.png
-// 04_Loadingprogress.html:53 progress: 33.333333333333336%
-// 04_Loadingprogress.html:46 loading: ../image/explorer.png
-// 04_Loadingprogress.html:53 progress: 66.66666666666667%
-// 04_Loadingprogress.html:46 loading: ../image/blob.png
-// 04_Loadingprogress.html:53 progress: 100%
-// 04_Loadingprogress.html:57 setup
-
-function setup() {
-  console.log("setup"); 
-  const cat = new Sprite(resources["../image/cat.png"].texture),
+    // Tạo các sprite mới từ các vẹt đã tải và thêm chúng vào scene
+    const cat = new Sprite(resources["../image/cat.png"].texture),
       blob = new Sprite(resources["../image/blob.png"].texture),
       explorer = new Sprite(resources["../image/explorer.png"].texture);
-  //Add the sprites to the stage
-  app.stage.addChild(cat);
-  app.stage.addChild(blob);
-  app.stage.addChild(explorer);
 
-  //Position the sprites
-  blob.position.set(82, 82);
+    app.stage.addChild(cat);
+    app.stage.addChild(blob);
+    app.stage.addChild(explorer);
+
+    // Đặt vị trí của mỗi sprite trên màn hình
+    blob.position.set(82, 82);
   explorer.position.set(128, 128);
 }
 </script>

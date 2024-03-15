@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixiJS App</title>
-  
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Ngăn chặn cuộn */
+        }
+        canvas {
+            display: block; /* Đảm bảo rằng canvas sẽ lấp đầy không gian của body */
+        }
+    </style>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+    <script src="../pixi/pixi.min.js"></script>
     <script>
         // Tạo ứng dụng PixiJS
         const app = new PIXI.Application({
             width: 800,
             height: 600,
-            backgroundColor: 0x1099bb,
+            backgroundColor: 0xFFFFFF,
         });
-
-        // Thêm canvas vào body của HTML
         document.body.appendChild(app.view);
-
         // Assets: Nạp hình ảnh
-        const texture = PIXI.Texture.from('assets/image.jpg');
+        const texture = PIXI.Texture.from('../image/cat.png');
 
         // Containers: Tạo container
         const container = new PIXI.Container();
@@ -44,30 +50,7 @@
             sprite.tint = Math.random() * 0xFFFFFF;
         });
 
-        // Sprites: Sử dụng sprite sheet
-        const sheet = PIXI.Loader.shared.resources['assets/spritesheet.json'].spritesheet;
-        const animatedSprite = new PIXI.AnimatedSprite(sheet.animations['animation']);
-        animatedSprite.position.set(500, 100);
-        animatedSprite.animationSpeed = 0.1;
-        animatedSprite.play();
-        container.addChild(animatedSprite);
-
-        // Text: Hiển thị văn bản
-        const textStyle = new PIXI.TextStyle({
-            fontFamily: 'Arial',
-            fontSize: 36,
-            fill: 'white'
-            
-        });
-        const text = new PIXI.Text('Hello PixiJS!', textStyle);
-        text.position.set(100, 300);
-        app.stage.addChild(text);
-
-        // Textures: Sử dụng texture trong sprite
-        const texture2 = PIXI.Texture.from('assets/another_image.jpg');
-        const sprite2 = new PIXI.Sprite(texture2);
-        sprite2.position.set(400, 300);
-        app.stage.addChild(sprite2);
+       
     </script>
 </body>
 </html>
