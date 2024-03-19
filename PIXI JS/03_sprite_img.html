@@ -51,12 +51,12 @@ function setup() {
 
   // Tải ảnh sử dụng PIXI Loader
   loader
-    .add("images/cat.png")
+    .add("../image/cat.png")
     .load(setup);
 
   function setup() {
     // Tạo một sprite mới sử dụng ảnh đã tải
-    const cat = new Sprite(resources["images/cat.png"].texture);
+    const cat = new Sprite(resources["../image/cat.png"].texture);
 
     // Thêm sprite vào stage
     app.stage.addChild(cat);
